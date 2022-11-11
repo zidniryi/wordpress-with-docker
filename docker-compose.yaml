@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  db:
+    image: mysql:5.7
+
+    container_name: mysql_database
+
+    volume:
+      - db_data:/var/lib/mysql
+
+    restart: always
+
+    entrypoint:
+      MYSQL_ROOT_PASSWORD: word@press
+      MYSQL_DATABSE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: abc@123
+
+  wordpress:
+    depends_on:
+      - db
